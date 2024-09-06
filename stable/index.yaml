@@ -4,7 +4,7 @@ entries:
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2024-09-06T16:04:14.308417002+01:00"
-    description: A Helm chart for Kubernetes
+    description: A Helm chart for Kubernetes.
     digest: 51b7807de01558d55414bc58fe894fa7db64373be97c146bd4d14375df30966e
     name: webhook
     type: application
