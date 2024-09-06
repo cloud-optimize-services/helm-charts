@@ -1,14 +1,40 @@
 apiVersion: v1
 entries:
   webhook:
-  - apiVersion: v2
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Add webhook
+        - kind: added
+          description: Add README files
+      artifacthub.io/containsSecurityUpdates: "true"
+      artifacthub.io/images: |-
+        - name: webhook
+          image: leonardomulticloud/webhook:v1.0.0
+      artifacthub.io/links: |
+        - name: source
+          url: https://github.com/cloud-optimize-services/helm-charts
+        - name: support
+          url: https://github.com/cloud-optimize-services/helm-charts/issues
+    apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-09-06T16:04:14.308417002+01:00"
-    description: A Helm chart for Kubernetes.
-    digest: 51b7807de01558d55414bc58fe894fa7db64373be97c146bd4d14375df30966e
+    created: "2024-09-06T17:32:03.568179862+01:00"
+    description: A Helm chart for Kubernetes
+    digest: 99382e11d4701d5c9547221ba7e969737303c407dc0d45063602d0f685d46651
+    home: https://artifacthub.io/packages/helm/webhook/webhook
+    keywords:
+    - kubernetes
+    - helm
+    - golang
+    - webhook
+    - vault
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: leonardo.multicloud@gmail.com
+      name: Leonardo
     name: webhook
     type: application
     urls:
-    - webhook-0.1.1.tgz
-    version: 0.1.1
-generated: "2024-09-06T16:04:14.307440601+01:00"
+    - webhook-1.0.0.tgz
+    version: 1.0.0
+generated: "2024-09-06T17:32:03.56769411+01:00"

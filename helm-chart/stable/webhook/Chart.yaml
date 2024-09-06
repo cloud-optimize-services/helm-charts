@@ -1,24 +1,32 @@
 apiVersion: v2
 name: webhook
 description: A Helm chart for Kubernetes
-
-# A chart can be either an 'application' or a 'library' chart.
-#
-# Application charts are a collection of templates that can be packaged into versioned archives
-# to be deployed.
-#
-# Library charts provide useful utilities or functions for the chart developer. They're included as
-# a dependency of application charts to inject those utilities and functions into the rendering
-# pipeline. Library charts do not define any templates and therefore cannot be deployed.
 type: application
-
-# This is the chart version. This version number should be incremented each time you make changes
-# to the chart and its templates, including the app version.
-# Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.1
-
-# This is the version number of the application being deployed. This version number should be
-# incremented each time you make changes to the application. Versions are not expected to
-# follow Semantic Versioning. They should reflect the version the application is using.
-# It is recommended to use it with quotes.
+version: 1.0.0
 appVersion: "1.16.0"
+kubeVersion: ">= 1.19.0-0"
+home: https://artifacthub.io/packages/helm/webhook/webhook
+keywords:
+  - kubernetes
+  - helm
+  - golang
+  - webhook
+  - vault
+maintainers:
+  - name: Leonardo
+    email: leonardo.multicloud@gmail.com
+annotations:
+  artifacthub.io/containsSecurityUpdates: "true"
+  artifacthub.io/changes: |
+    - kind: added
+      description: Add webhook
+    - kind: added
+      description: Add README files
+  artifacthub.io/links: |
+    - name: source
+      url: https://github.com/cloud-optimize-services/helm-charts
+    - name: support
+      url: https://github.com/cloud-optimize-services/helm-charts/issues
+  artifacthub.io/images: |
+    - name: webhook
+      image: leonardomulticloud/webhook:v1.0.0
