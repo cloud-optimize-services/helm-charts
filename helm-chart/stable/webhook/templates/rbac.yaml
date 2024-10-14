@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: secrets-global
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: secrets-global
+subjects:
+- kind: ServiceAccount
+  name: webhook
+  namespace: sapo-rgpd-api-stg
+roleRef:
+  kind: ClusterRole
+  name: secrets-global
+  apiGroup: rbac.authorization.k8s.io

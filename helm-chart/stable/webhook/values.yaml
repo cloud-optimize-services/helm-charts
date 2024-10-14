@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: leonardomulticloud/webhook:v1.0.0
-  pullPolicy: IfNotPresent
+  repository: leonardomulticloud/webhook
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  tag: "v1.0.0"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -28,10 +28,10 @@ serviceAccount:
 podAnnotations: {}
 podLabels: {}
 
-podSecurityContext: {}
+#podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: {}
+#securityContext: {}
   # capabilities:
   #   drop:
   #   - ALL

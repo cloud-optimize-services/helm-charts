@@ -1,0 +1,104 @@
+---
+# Source: webhook/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: webhook
+  labels:
+    helm.sh/chart: webhook-1.0.0
+    app.kubernetes.io/name: webhook
+    app.kubernetes.io/instance: webhook
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+automountServiceAccountToken: true
+---
+# Source: webhook/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: webhook
+  labels:
+    helm.sh/chart: webhook-1.0.0
+    app.kubernetes.io/name: webhook
+    app.kubernetes.io/instance: webhook
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 9090
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: webhook
+    app.kubernetes.io/instance: webhook
+---
+# Source: webhook/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhook
+  labels:
+    helm.sh/chart: webhook-1.0.0
+    app.kubernetes.io/name: webhook
+    app.kubernetes.io/instance: webhook
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: webhook
+      app.kubernetes.io/instance: webhook
+  template:
+    metadata:
+      labels:
+        helm.sh/chart: webhook-1.0.0
+        app.kubernetes.io/name: webhook
+        app.kubernetes.io/instance: webhook
+        app.kubernetes.io/version: "1.16.0"
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: webhook
+      securityContext:
+        null
+      containers:
+        - name: webhook
+          securityContext:
+            null
+          image: "leonardomulticloud/webhook:v1.0.0"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 9090
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: secrets-global
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["*"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: secrets-global
+subjects:
+- kind: ServiceAccount
+  name: webhook
+  namespace: sapo-rgpd-api-stg
+roleRef:
+  kind: ClusterRole
+  name: secrets-global
+  apiGroup: rbac.authorization.k8s.io
