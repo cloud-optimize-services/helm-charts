@@ -6,5 +6,5 @@
 **Security note**: please review carefully all the configuration options available before deploying Artifact Hub in a production environment. The default values are just intended to provide users with a quick and easy way to try the software.
 
 
-$ helm repo add webhook https://cloud-optimize-services.github.io/helm-charts/stable
-$ helm install my-webhook webhook/webhook --version 0.1.1
+$ helm repo add svc-secret-manager https://cloud-optimize-services.github.io/helm-charts/stable
+$ helm install svc-secret-manager svc-secret-manager/svc-secret-manager --version 1.0.0
