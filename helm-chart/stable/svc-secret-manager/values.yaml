@@ -1,0 +1,61 @@
+image:
+  webhook: "leonardomulticloud/webhook:v1.0.0"
+  backend: "leonardomulticloud/svc-vault:v1.0.0"
+  frontend: "leonardomulticloud/svc-vault-frontend:v1.0.0"
+  mysql: "mysql:9.0.1"
+
+resources:
+
+  mysql:
+    enabled: false
+
+  webhook:
+    enabled: false
+    imagePullPolicy: Always
+    ingress:
+      enabled: true
+      hostname: "webhook-staging.example.com"
+      className: "nginx"
+      tlsSecret: "webhook-tls"
+    limits:
+      cpu: 100m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+  backend:
+    enabled: false
+    imagePullPolicy: Always
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  frontend:
+    enabled: true
+    imagePullPolicy: Always
+    ingress:
+      enabled: true
+      hostname: "secret-manager.example.com"
+      className: "nginx"
+      tlsSecret: "frontend-tls"
+    limits:
+      cpu: 1024m
+      memory: 1024Mi
+    requests:
+      cpu: 512m
+      memory: 512Mi
+
+env:
+  db:
+    user: "usr_vault"
+    password: "a2b2c3"
+    host: "mysql"
+    port: "3306"
+    name: "vault"
+  api_key: "a8f3431adc04d75a13bc213f4620b80d86cffe32885f402489dde5bab0240e17"
+  react_app_api_host: "https://secret-manager.example.com"
+  node_env: "development"

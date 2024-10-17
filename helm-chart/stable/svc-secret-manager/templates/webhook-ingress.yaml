@@ -1,0 +1,25 @@
+{{- if .Values.resources.webhook.enabled -}}
+{{- if .Values.resources.webhook.ingress.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webhook
+spec:
+  ingressClassName: {{ .Values.resources.webhook.ingress.className }}
+  rules:
+    - host: {{ .Values.resources.webhook.ingress.hostname }}
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: webhook
+                port:
+                  number: 9090
+  tls:
+    - hosts:
+        - {{ .Values.resources.webhook.ingress.hostname }}
+      secretName: {{ .Values.resources.webhook.ingress.tlsSecret }}
+{{- end }}
+{{- end }}

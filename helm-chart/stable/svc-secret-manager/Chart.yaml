@@ -1,16 +1,16 @@
 apiVersion: v2
-name: webhook
+name: svc-secret-manager
 description: A Helm chart for Kubernetes
 type: application
 version: 1.0.0
 appVersion: "1.16.0"
 kubeVersion: ">= 1.19.0-0"
-home: https://artifacthub.io/packages/helm/webhook/webhook
+home: https://artifacthub.io/packages/helm/svc-secret-manager/svc-secret-manager
 keywords:
   - kubernetes
   - helm
   - golang
-  - webhook
+  - svc-secret-manager
   - vault
 maintainers:
   - name: Leonardo
@@ -19,7 +19,7 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "true"
   artifacthub.io/changes: |
     - kind: added
-      description: Add webhook
+      description: Add svc-secret-manager
     - kind: added
       description: Add README files
   artifacthub.io/links: |
@@ -30,3 +30,7 @@ annotations:
   artifacthub.io/images: |
     - name: webhook
       image: leonardomulticloud/webhook:v1.0.0
+    - name: backend
+      image: leonardomulticloud/svc-vault:v1.0.0
+    - name: frontend
+      image: leonardomulticloud/svc-vault-frontend:v1.0.0
