@@ -1,0 +1,36 @@
+{{- if .Values.resources.webhook.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhook
+  labels:
+    app.kubernetes.io/name: webhook
+    app.kubernetes.io/instance: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: webhook
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: webhook
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      serviceAccountName: webhook
+      containers:
+        - name: webhook
+          image: {{ .Values.image.webhook }}
+          ports:
+            - name: http
+              containerPort: 9090
+              protocol: TCP
+          resources:
+            limits:
+              cpu: {{ .Values.resources.webhook.limits.cpu }}
+              memory: {{ .Values.resources.webhook.limits.memory }}
+            requests:
+              cpu: {{ .Values.resources.webhook.requests.cpu }}
+              memory: {{ .Values.resources.webhook.requests.memory }}
+{{- end }}

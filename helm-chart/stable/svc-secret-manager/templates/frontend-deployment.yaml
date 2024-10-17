@@ -1,0 +1,45 @@
+{{- if .Values.resources.frontend.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/instance: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: frontend
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: frontend
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      securityContext:
+        null
+      containers:
+        - name: frontend
+          securityContext:
+            null
+          image: {{ .Values.image.frontend }}
+          imagePullPolicy: {{ .Values.resources.frontend.imagePullPolicy }}
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          resources:
+            limits:
+              cpu: {{ .Values.resources.frontend.limits.cpu }}
+              memory: {{ .Values.resources.frontend.limits.memory }}
+            requests:
+              cpu: {{ .Values.resources.frontend.requests.cpu }}
+              memory: {{ .Values.resources.frontend.requests.memory }}
+          env:
+            - name: REACT_APP_API_HOST
+              value: {{ .Values.env.react_app_api_host }}
+            - name: NODE_ENV
+              value: {{ .Values.env.node_env }}
+{{- end }}
