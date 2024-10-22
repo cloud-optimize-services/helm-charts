@@ -33,4 +33,7 @@ spec:
             requests:
               cpu: {{ .Values.resources.webhook.requests.cpu }}
               memory: {{ .Values.resources.webhook.requests.memory }}
+          env:
+            - name: API_KEY
+              value: {{ .Values.env.api_key }}
 {{- end }}
