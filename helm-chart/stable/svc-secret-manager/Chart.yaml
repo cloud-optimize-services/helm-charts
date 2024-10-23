@@ -5,12 +5,12 @@ type: application
 version: 1.0.0
 appVersion: "1.16.0"
 kubeVersion: ">= 1.19.0-0"
-home: https://artifacthub.io/packages/helm/svc-secret-manager/svc-secret-manager
+home: https://artifacthub.io/packages/helm/secret-manager/secret-manager
 keywords:
   - kubernetes
   - helm
   - golang
-  - svc-secret-manager
+  - secret-manager
   - vault
 maintainers:
   - name: Leonardo
@@ -19,7 +19,7 @@ annotations:
   artifacthub.io/containsSecurityUpdates: "true"
   artifacthub.io/changes: |
     - kind: added
-      description: Add svc-secret-manager
+      description: Add secret-manager
     - kind: added
       description: Add README files
   artifacthub.io/links: |
