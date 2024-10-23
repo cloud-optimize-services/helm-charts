@@ -5,6 +5,7 @@
 
 **Security note**: please review carefully all the configuration options available before deploying Artifact Hub in a production environment. The default values are just intended to provide users with a quick and easy way to try the software.
 
-
-$ helm repo add svc-secret-manager https://cloud-optimize-services.github.io/helm-charts/stable
-$ helm install svc-secret-manager svc-secret-manager/svc-secret-manager --version 1.0.0
+```
+$ helm repo add secret-manager https://cloud-optimize-services.github.io/helm-charts/stable
+$ helm install secret-manager secret-manager/secret-manager --version 1.0.0
+```

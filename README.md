@@ -1,6 +1,6 @@
 # helm-charts
 
-[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/svc-secret-manager)](https://artifacthub.io/packages/helm/svc-secret-manager/svc-secret-manager)
+[![Artifact HUB](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/secret-manager)](https://artifacthub.io/packages/helm/secret-manager/secret-manager)
 
 ## Usage
 
