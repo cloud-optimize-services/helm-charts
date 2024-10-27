@@ -1,10 +1,10 @@
 apiVersion: v1
 entries:
-  svc-secret-manager:
+  secret-manager:
   - annotations:
       artifacthub.io/changes: |
         - kind: added
-          description: Add svc-secret-manager
+          description: Add secret-manager
         - kind: added
           description: Add README files
       artifacthub.io/containsSecurityUpdates: "true"
@@ -25,20 +25,20 @@ entries:
     created: "2024-09-06T17:32:03.568179862+01:00"
     description: A Helm chart for Kubernetes
     digest: 99382e11d4701d5c9547221ba7e969737303c407dc0d45063602d0f685d46651
-    home: https://artifacthub.io/packages/helm/svc-secret-manager/svc-secret-manager
+    home: https://artifacthub.io/packages/helm/secret-manager/secret-manager
     keywords:
     - kubernetes
     - helm
     - golang
-    - svc-secret-manager
+    - secret-manager
     - vault
     kubeVersion: '>= 1.19.0-0'
     maintainers:
     - email: leonardo.multicloud@gmail.com
       name: Leonardo
-    name: svc-secret-manager
+    name: secret-manager
     type: application
     urls:
-    - svc-secret-manager-1.0.0.tgz
+    - secret-manager-1.0.0.tgz
     version: 1.0.0
 generated: "2024-09-06T17:32:03.56769411+01:00"
